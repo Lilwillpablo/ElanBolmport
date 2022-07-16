@@ -54,12 +54,12 @@ namespace JsonParsing
                         }
 
                         var db = new Database();
-                        dbResult = db.GetResults($"exec backorderImportInit @coid = {coid}");
+                        dbResult = db.GetResults($"exec backorderImportInit @coid = '{coid}'");
 
                         // Check db call was successful and bail if not showing error message on screen and non zero exit code.
                         if (dbResult.Item1 != "")
                         {
-                            Terminate(1, $"Failed to execute database call to backorderImportInit: {dbResult.Item1}");
+                            Terminate(1, $"Failed to execute database call to backorderImportInit: '{dbResult.Item1}'");
                         }
 
                         foreach (Order order in orders)
